@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-desbrava-sand text-slate-800 font-sans m-0 p-0;
+  }
+}
+
+/* Custom animations */
+@keyframes spinDice {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(360deg) scale(1.2); }
+  50% { transform: rotate(720deg) scale(1); }
+  75% { transform: rotate(1080deg) scale(1.2); }
+  100% { transform: rotate(1440deg) scale(1); }
+}
+
+.animate-spin-dice {
+  animation: spinDice 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Scrollbar styling for a better look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #E6D5B8;
+}
+::-webkit-scrollbar-thumb {
+  background: #8B4513;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5320;
+}
