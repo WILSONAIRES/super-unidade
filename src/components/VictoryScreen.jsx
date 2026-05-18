@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Trophy, Star, Award, Medal, RotateCcw, Sparkles, ListOrdered } from 'lucide-react';
+import { saveHighScore, getTopHighScores } from '../logic/firebase';
 
 const VictoryScreen = ({ players, onRestart }) => {
   const [highScores, setHighScores] = useState([]);
@@ -42,24 +43,22 @@ const VictoryScreen = ({ players, onRestart }) => {
   const winner = sortedPlayers[0];
 
   useEffect(() => {
-    // Load and update high scores in local storage
-    const stored = JSON.parse(localStorage.getItem('campori_high_scores') || '[]');
-    
-    // Add current game's scores to the history pool
-    const newEntries = players.map(p => ({
-      name: p.name,
-      club: p.club,
-      score: p.score,
-      date: new Date().toLocaleDateString('pt-BR'),
-    }));
+    const updateScores = async () => {
+      // 1. Grava a pontuação de todos os jogadores da partida no Firebase de forma global
+      for (const p of players) {
+        await saveHighScore({
+          name: p.name,
+          club: p.club,
+          score: p.score
+        });
+      }
+      
+      // 2. Busca o Top 5 Global atualizado direto do banco de dados na nuvem
+      const globalScores = await getTopHighScores();
+      setHighScores(globalScores);
+    };
 
-    const combined = [...stored, ...newEntries];
-    // Sort and keep top 5
-    combined.sort((a, b) => b.score - a.score);
-    const topFive = combined.slice(0, 5);
-
-    localStorage.setItem('campori_high_scores', JSON.stringify(topFive));
-    setHighScores(topFive);
+    updateScores();
   }, [players]);
 
   const winnerTrophy = getTrophyDetails(winner.score);

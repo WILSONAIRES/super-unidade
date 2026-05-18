@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tent, Users, User, Shield, Trophy, Star } from 'lucide-react';
+import { getTopHighScores } from '../logic/firebase';
 
 const LoginScreen = ({ onStart }) => {
   const [numPlayers, setNumPlayers] = useState(1);
@@ -27,8 +28,11 @@ const LoginScreen = ({ onStart }) => {
   ];
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('campori_high_scores') || '[]');
-    setHighScores(stored);
+    const fetchScores = async () => {
+      const scores = await getTopHighScores();
+      setHighScores(scores);
+    };
+    fetchScores();
   }, []);
 
   const handleNumPlayersChange = (num) => {
