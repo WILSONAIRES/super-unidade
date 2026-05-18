@@ -357,7 +357,7 @@ export const bancoPerguntas = [
   {
     id: 31,
     categoria: "ESPIRITUAL",
-    pergunta: "Complete o Voto: 'Pela graça de Deus, serei puro, amigo e...'",
+    pergunta: "Complete o Voto: 'Pela graça de Deus, serei puro, bondoso e...'",
     opcoes: ["Leal", "Forte", "Prestativo", "Verdadeiro"],
     correta: 0
   },
