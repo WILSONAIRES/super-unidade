@@ -238,7 +238,7 @@ export const bancoPerguntas = [
     categoria: "MENTAL",
     pergunta: "Qual é o nome da classe avançada correspondente à classe de Pioneiro?",
     opcoes: ["Pioneiro de Novas Fronteiras", "Pioneiro de Fronteira", "Pioneiro de Liderança", "Pioneiro Missionário"],
-    correta: 1
+    correta: 0
   },
   {
     id: 25,

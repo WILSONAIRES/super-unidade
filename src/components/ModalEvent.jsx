@@ -79,12 +79,17 @@ const ModalEvent = ({ event, onClose }) => {
           {isQuiz ? (
             <div className="flex flex-col gap-4 w-full">
               {event.type === 'CHECKPOINT' ? (
-                <span className="px-3 py-1 bg-amber-100 border border-amber-300 text-amber-800 rounded-full font-black text-[10px] uppercase tracking-widest self-center shadow-sm">
-                  ⭐ Portal de Especialidade: Casa {data.checkpoint} ⭐
-                </span>
+                <div className="flex flex-col items-center gap-1">
+                  <span className="px-3 py-1 bg-amber-100 border border-amber-300 text-amber-800 rounded-full font-black text-[10px] uppercase tracking-widest self-center shadow-sm">
+                    ⭐ Portal de Especialidade: Casa {data.checkpoint} ⭐
+                  </span>
+                  <span className="text-[8px] font-black uppercase text-slate-300 tracking-widest">
+                    ID: {data.id}
+                  </span>
+                </div>
               ) : (
                 <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
-                  Categoria: {data.categoria}
+                  Categoria: {data.categoria} <span className="opacity-50 ml-2">| ID: {data.id}</span>
                 </span>
               )}
               <p className="font-extrabold text-lg text-slate-800 leading-snug">{data.pergunta}</p>
