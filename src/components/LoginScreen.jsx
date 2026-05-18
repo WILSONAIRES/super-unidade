@@ -160,7 +160,7 @@ const LoginScreen = ({ onStart }) => {
         {highScores.length > 0 && (
           <div className="w-full mt-6 border-t border-slate-200 pt-5 text-left">
             <h3 className="text-xs font-black text-desbrava-blue uppercase mb-3 flex items-center gap-1.5">
-              <Trophy size={15} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 5)
+              <Trophy size={15} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 10)
             </h3>
             <div className="flex flex-col gap-1.5">
               {highScores.map((score, idx) => (

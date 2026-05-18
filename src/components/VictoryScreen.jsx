@@ -132,10 +132,10 @@ const VictoryScreen = ({ players, onRestart }) => {
           </div>
         </div>
 
-        {/* Persistent Local Ranking (Top 5 Ever) */}
+        {/* Persistent Local Ranking (Top 10 Ever) */}
         <div className="w-full mb-8 text-left border-t border-slate-200 pt-4">
           <h3 className="text-xs font-black text-desbrava-blue uppercase mb-2 flex items-center gap-1">
-            <Trophy size={14} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 5)
+            <Trophy size={14} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 10)
           </h3>
           <div className="flex flex-col gap-1.5">
             {highScores.map((score, idx) => (

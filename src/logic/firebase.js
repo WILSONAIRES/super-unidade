@@ -30,11 +30,11 @@ export const saveHighScore = async (playerScore) => {
   }
 };
 
-// Helper function to fetch the top 5 high scores from Firestore
+// Helper function to fetch the top 10 high scores from Firestore
 export const getTopHighScores = async () => {
   try {
     const scoresCol = collection(db, 'high_scores');
-    const q = query(scoresCol, orderBy('score', 'desc'), orderBy('timestamp', 'asc'), limit(5));
+    const q = query(scoresCol, orderBy('score', 'desc'), orderBy('timestamp', 'asc'), limit(10));
     const querySnapshot = await getDocs(q);
     const scores = [];
     querySnapshot.forEach((doc) => {
