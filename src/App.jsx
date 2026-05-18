@@ -80,7 +80,7 @@ function App() {
     let stepsLeft = Math.abs(steps);
     const direction = steps > 0 ? 1 : -1;
     const startPos = players.find(p => p.id === playerId)?.position || 0;
-    const checkpoints = [20, 40];
+    const checkpoints = [15, 30, 45];
     let hitCheckpoint = null;
 
     const interval = setInterval(() => {

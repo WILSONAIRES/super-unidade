@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpCircle, AlertTriangle, Tent, Flag, CheckCircle, Dumbbell, Brain, Heart } from 'lucide-react';
+import { HelpCircle, AlertTriangle, Tent, Flag, CheckCircle, Dumbbell, Brain, Heart, Sparkles } from 'lucide-react';
 
 const BoardCell = ({ cell, playersHere, currentPlayerId }) => {
   let bgColor = 'bg-slate-300';
@@ -7,44 +7,53 @@ const BoardCell = ({ cell, playersHere, currentPlayerId }) => {
   let label = cell.id;
   let cellName = '';
 
-  switch (cell.type) {
-    case 'START':
-      bgColor = 'bg-desbrava-yellow text-desbrava-blue';
-      icon = <Flag size={20} />;
-      label = 'Largada';
-      break;
-    case 'FINISH':
-      bgColor = 'bg-desbrava-yellow text-desbrava-blue';
-      icon = <CheckCircle size={20} />;
-      label = 'Chegada';
-      break;
-    case 'QUIZ_FISICO':
-      bgColor = 'bg-amber-600 text-white';
-      icon = <Dumbbell size={18} />;
-      cellName = 'Físico';
-      break;
-    case 'QUIZ_MENTAL':
-      bgColor = 'bg-blue-600 text-white';
-      icon = <Brain size={18} />;
-      cellName = 'Mental';
-      break;
-    case 'QUIZ_ESPIRITUAL':
-      bgColor = 'bg-purple-600 text-white';
-      icon = <Heart size={18} />;
-      cellName = 'Espiritual';
-      break;
-    case 'PENALTY':
-      bgColor = 'bg-red-600 text-white';
-      icon = <AlertTriangle size={18} />;
-      cellName = 'Inspeção';
-      break;
-    case 'BONUS':
-      bgColor = 'bg-desbrava-green text-white';
-      icon = <Tent size={18} />;
-      cellName = 'Rotina';
-      break;
-    default:
-      break;
+  const checkpoints = [15, 30, 45];
+  const isCheckpoint = checkpoints.includes(cell.id);
+
+  if (isCheckpoint) {
+    bgColor = 'bg-gradient-to-br from-indigo-600 via-fuchsia-600 to-violet-700 text-white shadow-[0_0_15px_rgba(139,92,246,0.5)] border-2 border-yellow-400 animate-pulse';
+    icon = <Sparkles className="text-yellow-300 fill-yellow-300 animate-bounce" size={20} />;
+    cellName = 'Portal';
+  } else {
+    switch (cell.type) {
+      case 'START':
+        bgColor = 'bg-desbrava-yellow text-desbrava-blue';
+        icon = <Flag size={20} />;
+        label = 'Largada';
+        break;
+      case 'FINISH':
+        bgColor = 'bg-desbrava-yellow text-desbrava-blue';
+        icon = <CheckCircle size={20} />;
+        label = 'Chegada';
+        break;
+      case 'QUIZ_FISICO':
+        bgColor = 'bg-amber-600 text-white';
+        icon = <Dumbbell size={18} />;
+        cellName = 'Físico';
+        break;
+      case 'QUIZ_MENTAL':
+        bgColor = 'bg-blue-600 text-white';
+        icon = <Brain size={18} />;
+        cellName = 'Mental';
+        break;
+      case 'QUIZ_ESPIRITUAL':
+        bgColor = 'bg-purple-600 text-white';
+        icon = <Heart size={18} />;
+        cellName = 'Espiritual';
+        break;
+      case 'PENALTY':
+        bgColor = 'bg-red-600 text-white';
+        icon = <AlertTriangle size={18} />;
+        cellName = 'Inspeção';
+        break;
+      case 'BONUS':
+        bgColor = 'bg-desbrava-green text-white';
+        icon = <Tent size={18} />;
+        cellName = 'Rotina';
+        break;
+      default:
+        break;
+    }
   }
 
   const isCurrentPlayerHere = playersHere.some(p => p.id === currentPlayerId);
