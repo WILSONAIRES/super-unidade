@@ -308,7 +308,7 @@ export const bancoPerguntas = [
     categoria: "MENTAL",
     pergunta: "Qual classe regular tem como cor oficial o cinza?",
     opcoes: ["Companheiro", "Pesquisador", "Pioneiro", "Guia"],
-    correta: 3
+    correta: 2
   },
   {
     id: 60,
