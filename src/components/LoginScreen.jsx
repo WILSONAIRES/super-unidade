@@ -196,14 +196,6 @@ const LoginScreen = ({ onStart }) => {
           >
             <Tent size={22} /> Iniciar Acampamento
           </button>
-
-          <button 
-            type="button"
-            onClick={handleStartBeta}
-            className="w-full mt-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-transform active:scale-95 uppercase tracking-wider flex justify-center items-center gap-2 text-sm border-b-4 border-violet-800"
-          >
-            <Sparkles size={18} className="text-yellow-300 fill-yellow-300 animate-pulse" /> Testar Novo Tabuleiro (Beta)
-          </button>
         </form>
 
         {/* Persistent Local Ranking (Top 100 Ever) on Login Screen */}
