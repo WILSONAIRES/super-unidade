@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Tent, Users, User, Shield } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Tent, Users, User, Shield, Trophy, Star } from 'lucide-react';
 
 const LoginScreen = ({ onStart }) => {
   const [numPlayers, setNumPlayers] = useState(1);
+  const [highScores, setHighScores] = useState([]);
   const [playersData, setPlayersData] = useState([
     { name: '', club: '' },
     { name: '', club: '' },
@@ -24,6 +25,11 @@ const LoginScreen = ({ onStart }) => {
     { name: 'Rosa', class: 'bg-pink-500 text-white' },
     { name: 'Ciano', class: 'bg-teal-500 text-white' }
   ];
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('campori_high_scores') || '[]');
+    setHighScores(stored);
+  }, []);
 
   const handleNumPlayersChange = (num) => {
     setNumPlayers(num);
@@ -97,7 +103,7 @@ const LoginScreen = ({ onStart }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="max-h-[350px] overflow-y-auto pr-2 flex flex-col gap-4 border-t border-b border-slate-200 py-4 scrollbar-thin">
+          <div className="max-h-[300px] overflow-y-auto pr-2 flex flex-col gap-4 border-t border-b border-slate-200 py-4 scrollbar-thin">
             {Array.from({ length: numPlayers }).map((_, idx) => (
               <div key={idx} className="p-3 bg-desbrava-sand/20 rounded-xl border border-desbrava-sand/40">
                 <div className="flex items-center gap-2 mb-2">
@@ -140,11 +146,37 @@ const LoginScreen = ({ onStart }) => {
 
           <button 
             type="submit"
-            className="w-full mt-4 bg-desbrava-yellow hover:bg-yellow-400 text-desbrava-blue font-black py-4 rounded-xl shadow-lg transition-transform active:scale-95 uppercase tracking-wider flex justify-center items-center gap-2 text-base border-b-4 border-yellow-600"
+            className="w-full mt-2 bg-desbrava-yellow hover:bg-yellow-400 text-desbrava-blue font-black py-4 rounded-xl shadow-lg transition-transform active:scale-95 uppercase tracking-wider flex justify-center items-center gap-2 text-base border-b-4 border-yellow-600"
           >
             <Tent size={22} /> Iniciar Acampamento
           </button>
         </form>
+
+        {/* Persistent Local Ranking (Top 5 Ever) on Login Screen */}
+        {highScores.length > 0 && (
+          <div className="w-full mt-6 border-t border-slate-200 pt-5 text-left">
+            <h3 className="text-xs font-black text-desbrava-blue uppercase mb-3 flex items-center gap-1.5">
+              <Trophy size={15} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 5)
+            </h3>
+            <div className="flex flex-col gap-1.5">
+              {highScores.map((score, idx) => (
+                <div key={idx} className="flex items-center justify-between py-2 px-3 rounded-xl bg-desbrava-sand/20 border border-desbrava-sand/40 text-xs font-bold text-slate-700 hover:bg-desbrava-sand/35 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <span className={`font-black w-5 text-center ${idx === 0 ? 'text-yellow-500' : idx === 1 ? 'text-slate-400' : idx === 2 ? 'text-amber-600' : 'text-slate-400'}`}>
+                      {idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`}
+                    </span>
+                    <span className="font-extrabold text-slate-800">{score.name}</span>
+                    <span className="text-[10px] font-normal text-slate-400">({score.club})</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-black text-desbrava-blue">{score.score} PUP</span>
+                    <span className="text-[9px] font-normal text-slate-400">{score.date}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
