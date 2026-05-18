@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { HelpCircle, AlertTriangle, Tent, CheckCircle, XCircle, Dumbbell, Brain, Heart } from 'lucide-react';
+import { HelpCircle, AlertTriangle, Tent, CheckCircle, XCircle, Dumbbell, Brain, Heart, Trophy } from 'lucide-react';
 
 const ModalEvent = ({ event, onClose }) => {
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [selectedOpt, setSelectedOpt] = useState(null);
 
-  const isQuiz = event.type === 'QUIZ';
+  const isQuiz = event.type === 'QUIZ' || event.type === 'CHECKPOINT';
   const data = event.data;
 
   let bgColor = 'bg-white';
@@ -22,6 +22,10 @@ const ModalEvent = ({ event, onClose }) => {
     headerColor = 'bg-desbrava-green';
     title = 'Rotina do Acampamento';
     icon = <Tent className="text-white" size={28} />;
+  } else if (event.type === 'CHECKPOINT') {
+    headerColor = 'bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 animate-pulse';
+    title = 'Portal de Especialidade';
+    icon = <Trophy className="text-white fill-white animate-bounce" size={28} />;
   } else if (isQuiz) {
     // Dynamic styling based on Quiz Category
     if (data.categoria === 'FÍSICO') {
@@ -74,9 +78,15 @@ const ModalEvent = ({ event, onClose }) => {
         <div className="p-6 text-center text-slate-800 font-semibold text-base md:text-lg leading-relaxed flex-1 flex flex-col justify-center max-h-[350px] overflow-y-auto">
           {isQuiz ? (
             <div className="flex flex-col gap-4 w-full">
-              <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
-                Categoria: {data.categoria}
-              </span>
+              {event.type === 'CHECKPOINT' ? (
+                <span className="px-3 py-1 bg-amber-100 border border-amber-300 text-amber-800 rounded-full font-black text-[10px] uppercase tracking-widest self-center shadow-sm">
+                  ⭐ Portal de Especialidade: Casa {data.checkpoint} ⭐
+                </span>
+              ) : (
+                <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  Categoria: {data.categoria}
+                </span>
+              )}
               <p className="font-extrabold text-lg text-slate-800 leading-snug">{data.pergunta}</p>
               
               {data.imagem && (

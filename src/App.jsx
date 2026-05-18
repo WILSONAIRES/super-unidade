@@ -74,11 +74,14 @@ function App() {
     }, 1500);
   };
 
-  // Step-by-step movement animation
+  // Step-by-step movement animation with mandatory stops at checkpoints
   const animatePlayerMovement = (playerId, steps, onComplete = null) => {
     setIsAnimatingMovement(true);
     let stepsLeft = Math.abs(steps);
     const direction = steps > 0 ? 1 : -1;
+    const startPos = players.find(p => p.id === playerId)?.position || 0;
+    const checkpoints = [20, 40];
+    let hitCheckpoint = null;
 
     const interval = setInterval(() => {
       setPlayers((prevPlayers) => {
@@ -87,6 +90,18 @@ function App() {
             let nextPos = p.position + direction;
             if (nextPos < 0) nextPos = 0;
             if (nextPos > 60) nextPos = 60;
+            
+            // Check if player crosses a checkpoint they weren't already on
+            const crossedCP = checkpoints.find(cp => 
+              (direction === 1 && startPos < cp && nextPos >= cp) ||
+              (direction === -1 && startPos > cp && nextPos <= cp)
+            );
+            
+            if (crossedCP !== undefined) {
+              hitCheckpoint = crossedCP;
+              return { ...p, position: crossedCP };
+            }
+            
             return { ...p, position: nextPos };
           }
           return p;
@@ -99,7 +114,7 @@ function App() {
       setPlayers((currentPlayers) => {
         const active = currentPlayers.find(p => p.id === playerId);
         
-        if (stepsLeft <= 0 || active.position === 60 || (direction === -1 && active.position === 0)) {
+        if (hitCheckpoint !== null || stepsLeft <= 0 || active.position === 60 || (direction === -1 && active.position === 0)) {
           clearInterval(interval);
           setIsAnimatingMovement(false);
 
@@ -107,7 +122,9 @@ function App() {
           if (active.position === 60) {
             setGameState('FINISHED');
           } else {
-            if (onComplete) {
+            if (hitCheckpoint !== null) {
+              triggerCheckpointQuiz(playerId, hitCheckpoint);
+            } else if (onComplete) {
               onComplete(active.position);
             } else {
               processCell(playerId, active.position);
@@ -118,6 +135,26 @@ function App() {
       });
 
     }, 600); // Move every 600ms for a clear, rhythmic walking feel
+  };
+
+  const triggerCheckpointQuiz = (playerId, checkpointPos) => {
+    // Find all questions with images in the bank
+    const imageQuestions = questionsBank.filter(q => q.imagem);
+    if (imageQuestions.length === 0) {
+      processCell(playerId, checkpointPos);
+      return;
+    }
+    const randomIdx = Math.floor(Math.random() * imageQuestions.length);
+    const quiz = imageQuestions[randomIdx];
+    
+    // Set mandatory checkpoint quiz
+    setCurrentEvent({
+      type: 'CHECKPOINT',
+      data: {
+        ...quiz,
+        checkpoint: checkpointPos
+      }
+    });
   };
 
   const processCell = (playerId, pos) => {

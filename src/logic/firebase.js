@@ -36,7 +36,7 @@ export const getTopHighScores = async () => {
     const scoresCol = collection(db, 'high_scores');
     // Para evitar a necessidade de criar um "Índice Composto" manualmente no console do Firebase,
     // ordenamos apenas por 'score' na consulta e fazemos o desempate por 'timestamp' no JavaScript local.
-    const q = query(scoresCol, orderBy('score', 'desc'), limit(10));
+    const q = query(scoresCol, orderBy('score', 'desc'), limit(100));
     const querySnapshot = await getDocs(q);
     const scores = [];
     querySnapshot.forEach((doc) => {

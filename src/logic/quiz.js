@@ -786,6 +786,86 @@ export const bancoPerguntas = [
     pergunta: "Qual apóstolo é conhecido por escrever a revelação do Apocalipse enquanto estava exilado na ilha de Patmos?",
     opcoes: ["Paulo", "João", "Pedro", "Tiago"],
     correta: 1
+  },
+  {
+    id: 112,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade clássica representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/e/e0/Pioneering_AY_Honor.png/240px-Pioneering_AY_Honor.png",
+    opcoes: ["Pioneiria", "Resgate Básico", "Arte de Acampar", "Excursionismo"],
+    correta: 0
+  },
+  {
+    id: 113,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/b/b5/Campfire_Building_%26_Outdoor_Cooking_AY_Honor.png/240px-Campfire_Building_%26_Outdoor_Cooking_AY_Honor.png",
+    opcoes: ["Vida Silvestre", "Arte de Acampar", "Fogueiras e Cozinha de Acampamento", "Nutrição"],
+    correta: 2
+  },
+  {
+    id: 114,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade científica representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/7/7d/Weather_AY_Honor.png/240px-Weather_AY_Honor.png",
+    opcoes: ["Climatologia", "Meteorologia", "Geografia", "Astronomia"],
+    correta: 1
+  },
+  {
+    id: 115,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade de habilidades manuais representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/d/d4/Leathercraft_AY_Honor.png/240px-Leathercraft_AY_Honor.png",
+    opcoes: ["Modelagem em Argila", "Trabalhos em Couro", "Entalhe em Madeira", "Cestaria"],
+    correta: 1
+  },
+  {
+    id: 116,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de estudo da natureza representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/9/96/Ornithology_AY_Honor.png/240px-Ornithology_AY_Honor.png",
+    opcoes: ["Aves / Ornitologia", "Insetos", "Mamíferos", "Répteis"],
+    correta: 0
+  },
+  {
+    id: 117,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de estudo da natureza representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/8/86/Trees_AY_Honor.png/240px-Trees_AY_Honor.png",
+    opcoes: ["Flores", "Árvores", "Fungos", "Plantas Silvestres"],
+    correta: 1
+  },
+  {
+    id: 118,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade clássica de nós representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/3/30/Advanced_Knot_Tying_AY_Honor.png/240px-Advanced_Knot_Tying_AY_Honor.png",
+    opcoes: ["Nós e Amarras - Avançado", "Pioneiria", "Resgate com Cordas", "Escalada"],
+    correta: 0
+  },
+  {
+    id: 119,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de estudo da natureza representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/0/05/Mammals_AY_Honor.png/240px-Mammals_AY_Honor.png",
+    opcoes: ["Animais de Estimação", "Rastros de Animais", "Mamíferos", "Ecologia"],
+    correta: 2
+  },
+  {
+    id: 120,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de estudo da natureza representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/a/ab/Insects_AY_Honor.png/240px-Insects_AY_Honor.png",
+    opcoes: ["Insetos", "Aracnídeos", "Lepidopterologia", "Microbiologia"],
+    correta: 0
+  },
+  {
+    id: 121,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de estudo da natureza representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/e/e6/Reptiles_AY_Honor.png/240px-Reptiles_AY_Honor.png",
+    opcoes: ["Anfíbios", "Répteis", "Dinossauros", "Animais Ameaçados de Extinção"],
+    correta: 1
   }
 ];
 

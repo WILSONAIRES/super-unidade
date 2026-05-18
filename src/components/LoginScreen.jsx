@@ -166,13 +166,13 @@ const LoginScreen = ({ onStart }) => {
           </button>
         </form>
 
-        {/* Persistent Local Ranking (Top 5 Ever) on Login Screen */}
+        {/* Persistent Local Ranking (Top 100 Ever) on Login Screen */}
         {highScores.length > 0 && (
           <div className="w-full mt-6 border-t border-slate-200 pt-5 text-left">
             <h3 className="text-xs font-black text-desbrava-blue uppercase mb-3 flex items-center gap-1.5">
-              <Trophy size={15} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 10)
+              <Trophy size={15} className="text-desbrava-yellow fill-desbrava-yellow" /> Recordes do Campori (Top 100)
             </h3>
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col gap-1.5 max-h-[280px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200">
               {highScores.map((score, idx) => (
                 <div key={idx} className="flex items-center justify-between py-2 px-3 rounded-xl bg-desbrava-sand/20 border border-desbrava-sand/40 text-xs font-bold text-slate-700 hover:bg-desbrava-sand/35 transition-colors">
                   <div className="flex items-center gap-2">
