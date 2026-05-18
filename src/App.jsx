@@ -7,7 +7,8 @@ import Dice from './components/Dice';
 import ModalEvent from './components/ModalEvent';
 import VictoryScreen from './components/VictoryScreen';
 import { getRandomPenalty, getRandomBonus } from './logic/events';
-import { getRandomQuiz } from './logic/quiz';
+import { getRandomQuiz, bancoPerguntas } from './logic/quiz';
+import { syncQuestionsFromFirebase } from './logic/firebase';
 
 function App() {
   const [gameState, setGameState] = useState('LOGIN'); // LOGIN, PLAYING, FINISHED
@@ -21,6 +22,15 @@ function App() {
   
   const [usedQuizIds, setUsedQuizIds] = useState([]);
   const [isAnimatingMovement, setIsAnimatingMovement] = useState(false);
+  const [questionsBank, setQuestionsBank] = useState(bancoPerguntas);
+
+  useEffect(() => {
+    const syncQuestions = async () => {
+      const synced = await syncQuestionsFromFirebase(bancoPerguntas);
+      setQuestionsBank(synced);
+    };
+    syncQuestions();
+  }, []);
 
   useEffect(() => {
     if (gameState === 'PLAYING' && board.length === 0) {
@@ -123,19 +133,19 @@ function App() {
         setCurrentEvent({ type: 'BONUS', data: getRandomBonus() });
         break;
       case 'QUIZ_FISICO': {
-        const quiz = getRandomQuiz("FÍSICO", usedQuizIds);
+        const quiz = getRandomQuiz("FÍSICO", usedQuizIds, questionsBank);
         setUsedQuizIds(prev => [...prev, quiz.id]);
         setCurrentEvent({ type: 'QUIZ', data: quiz });
         break;
       }
       case 'QUIZ_MENTAL': {
-        const quiz = getRandomQuiz("MENTAL", usedQuizIds);
+        const quiz = getRandomQuiz("MENTAL", usedQuizIds, questionsBank);
         setUsedQuizIds(prev => [...prev, quiz.id]);
         setCurrentEvent({ type: 'QUIZ', data: quiz });
         break;
       }
       case 'QUIZ_ESPIRITUAL': {
-        const quiz = getRandomQuiz("ESPIRITUAL", usedQuizIds);
+        const quiz = getRandomQuiz("ESPIRITUAL", usedQuizIds, questionsBank);
         setUsedQuizIds(prev => [...prev, quiz.id]);
         setCurrentEvent({ type: 'QUIZ', data: quiz });
         break;

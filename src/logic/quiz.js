@@ -531,8 +531,8 @@ export const bancoPerguntas = [
   }
 ];
 
-export const getRandomQuiz = (category, usedIds = []) => {
-  let pool = bancoPerguntas;
+export const getRandomQuiz = (category, usedIds = [], bank = bancoPerguntas) => {
+  let pool = bank;
   if (category) {
     pool = pool.filter(q => q.categoria === category);
   }
