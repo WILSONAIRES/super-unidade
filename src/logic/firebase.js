@@ -34,12 +34,23 @@ export const saveHighScore = async (playerScore) => {
 export const getTopHighScores = async () => {
   try {
     const scoresCol = collection(db, 'high_scores');
-    const q = query(scoresCol, orderBy('score', 'desc'), orderBy('timestamp', 'asc'), limit(10));
+    // Para evitar a necessidade de criar um "Índice Composto" manualmente no console do Firebase,
+    // ordenamos apenas por 'score' na consulta e fazemos o desempate por 'timestamp' no JavaScript local.
+    const q = query(scoresCol, orderBy('score', 'desc'), limit(10));
     const querySnapshot = await getDocs(q);
     const scores = [];
     querySnapshot.forEach((doc) => {
       scores.push(doc.data());
     });
+    
+    // Desempate de pontuações iguais usando o timestamp (quem fez primeiro fica acima)
+    scores.sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return (a.timestamp || 0) - (b.timestamp || 0);
+    });
+
     return scores;
   } catch (error) {
     console.error("Erro ao buscar pontuações globais no Firebase:", error);
