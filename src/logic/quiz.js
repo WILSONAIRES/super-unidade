@@ -223,7 +223,7 @@ export const bancoPerguntas = [
     id: 22,
     categoria: "MENTAL",
     pergunta: "Qual classe regular tem como cor oficial o verde?",
-    opcoes: ["Companheiro", "Pioneiro", "Excursionista", "Guia"],
+    opcoes: ["Pesquisador", "Pioneiro", "Excursionista", "Guia"],
     correta: 0
   },
   {
@@ -421,7 +421,7 @@ export const bancoPerguntas = [
     id: 40,
     categoria: "ESPIRITUAL",
     pergunta: "Qual destas partes NÃO integra a Lei dos Desbravadores?",
-    opcoes: ["Observar a devoção matinal", "Guardar a Bíblia no bolso", "Cumprir com a parte que me cabe", "Ir a onde Deus mandar"],
+    opcoes: ["Observar a devoção matinal", "Guardar a Bíblia no bolso", "Cumprir fielmente a parte que me corresponde", "Ir a onde Deus mandar"],
     correta: 1
   },
   {

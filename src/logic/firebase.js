@@ -47,39 +47,33 @@ export const getTopHighScores = async () => {
   }
 };
 
-// Sync questions from Firebase, uploading them if Firestore is empty
+// Sync questions from Firebase, uploading/updating core questions to keep them up to date with code changes
 export const syncQuestionsFromFirebase = async (localQuestions) => {
   try {
     const qCol = collection(db, 'questions');
+    
+    // Auto-sincroniza as perguntas padrão locais com o Firebase para corrigir digitações e erros
+    const batch = writeBatch(db);
+    localQuestions.forEach((q) => {
+      // Usamos IDs previsíveis como 'q_40' para evitar duplicados e permitir atualizações
+      const docRef = doc(qCol, `q_${q.id}`);
+      batch.set(docRef, q);
+    });
+    await batch.commit();
+    console.log("Banco de perguntas padrão sincronizado com o Firebase!");
+    
+    // Busca todas as perguntas atualizadas direto do Firebase (incluindo as novas criadas pelo console)
     const snapshot = await getDocs(qCol);
-    
-    // If database is empty, let's self-populate it with the 75 local questions!
-    if (snapshot.empty) {
-      console.log("Banco de perguntas vazio no Firebase. Populando automaticamente...");
-      const batch = writeBatch(db);
-      
-      localQuestions.forEach((q) => {
-        // Use document ID as the question ID to avoid duplicates
-        const docRef = doc(qCol, `q_${q.id}`);
-        batch.set(docRef, q);
-      });
-      
-      await batch.commit();
-      console.log("Banco de perguntas populado no Firebase com sucesso!");
-      return localQuestions;
-    }
-    
-    // Retrieve and format questions from Firebase
     const firebaseQuestions = [];
     snapshot.forEach((doc) => {
       firebaseQuestions.push(doc.data());
     });
     
-    // Sort them by id to keep them structured
+    // Ordena as perguntas por ID para manter a estrutura
     firebaseQuestions.sort((a, b) => a.id - b.id);
     return firebaseQuestions;
   } catch (error) {
     console.error("Erro ao sincronizar perguntas com Firebase:", error);
-    return localQuestions; // Return local fallback if anything fails
+    return localQuestions; // Retorna o fallback local em caso de erro de rede
   }
 };
