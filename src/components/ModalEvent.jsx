@@ -90,11 +90,16 @@ const ModalEvent = ({ event, onClose }) => {
               <p className="font-extrabold text-lg text-slate-800 leading-snug">{data.pergunta}</p>
               
               {data.imagem && (
-                <div className="my-1 w-full flex justify-center bg-slate-50 py-2 rounded-xl border border-slate-100 shadow-sm">
+                <div className="my-1 w-full flex justify-center bg-slate-50 py-2 rounded-xl border border-slate-100 shadow-sm relative min-h-[120px]">
                   <img 
-                    src={data.imagem.startsWith('http') ? `https://images.weserv.nl/?url=${encodeURIComponent(data.imagem.replace(/^https?:\/\//, ''))}` : data.imagem} 
+                    src={data.imagem.startsWith('http') ? `https://wsrv.nl/?url=${encodeURIComponent(data.imagem)}` : data.imagem} 
                     alt="Imagem da Pergunta" 
-                    className="h-28 md:h-32 object-contain"
+                    className="h-28 md:h-32 object-contain relative z-10"
+                    onError={(e) => {
+                      // Fallback if proxy fails
+                      e.target.onerror = null;
+                      e.target.src = data.imagem;
+                    }}
                   />
                 </div>
               )}
