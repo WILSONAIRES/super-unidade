@@ -528,6 +528,54 @@ export const bancoPerguntas = [
     pergunta: "Quem foi escolhido para substituir Judas Iscariotes como o décimo segundo apóstolo?",
     opcoes: ["Matias", "Paulo", "Barnabé", "Estêvão"],
     correta: 0
+  },
+  {
+    id: 76,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade clássica representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/7/75/Knot_Tying_AY_Honor.png/240px-Knot_Tying_AY_Honor.png",
+    opcoes: ["Nós e Amarras", "Pioneirismo", "Arte de Acampar", "Resgate Básico"],
+    correta: 0
+  },
+  {
+    id: 77,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/1/11/Camping_Skills_I_AY_Honor.png/240px-Camping_Skills_I_AY_Honor.png",
+    opcoes: ["Fogueiras e Cozinha", "Excursionismo", "Arte de Acampar", "Excursionismo Pedestre"],
+    correta: 2
+  },
+  {
+    id: 78,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade científica representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/9/91/Astronomy_AY_Honor.png/240px-Astronomy_AY_Honor.png",
+    opcoes: ["Climatologia", "Física", "Astronomia", "Geologia"],
+    correta: 2
+  },
+  {
+    id: 79,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta importante especialidade de saúde representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/8/87/First_Aid%2C_Basic_AY_Honor.png/240px-First_Aid%2C_Basic_AY_Honor.png",
+    opcoes: ["Enfermagem Prática", "Resgate Básico", "Primeiros Socorros - Básico", "Segurança Básica"],
+    correta: 2
+  },
+  {
+    id: 80,
+    categoria: "MENTAL",
+    pergunta: "Qual é o nome desta especialidade de orientação representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/6/66/Map_%26_Compass_AY_Honor.png/240px-Map_%26_Compass_AY_Honor.png",
+    opcoes: ["Mapa e Bússola", "Pioneirismo", "Geocaching", "Topografia"],
+    correta: 0
+  },
+  {
+    id: 81,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o nome desta especialidade de atividades ao ar livre representada por esta insígnia oficial?",
+    imagem: "https://wiki.pathfindersonline.org/images/thumb/b/b3/Hiking_AY_Honor.png/240px-Hiking_AY_Honor.png",
+    opcoes: ["Excursionismo Pedestre", "Ciclismo", "Vida Campestre", "Acampamento I"],
+    correta: 0
   }
 ];
 

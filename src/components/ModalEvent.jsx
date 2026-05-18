@@ -78,6 +78,16 @@ const ModalEvent = ({ event, onClose }) => {
                 Categoria: {data.categoria}
               </span>
               <p className="font-extrabold text-lg text-slate-800 leading-snug">{data.pergunta}</p>
+              
+              {data.imagem && (
+                <div className="my-1 w-full flex justify-center bg-slate-50 py-2 rounded-xl border border-slate-100 shadow-sm">
+                  <img 
+                    src={data.imagem} 
+                    alt="Imagem da Pergunta" 
+                    className="h-28 md:h-32 object-contain"
+                  />
+                </div>
+              )}
               <div className="flex flex-col gap-2 mt-2 w-full text-left">
                 {data.opcoes.map((opt, idx) => {
                   let btnColor = "bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300";
