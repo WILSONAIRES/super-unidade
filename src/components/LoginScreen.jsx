@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Tent, Users, User, Shield, Trophy, Star } from 'lucide-react';
+import { Tent, Users, User, Shield, Trophy, Star, Sparkles } from 'lucide-react';
 import { getTopHighScores } from '../logic/firebase';
 
 const LoginScreen = ({ onStart }) => {
@@ -74,6 +74,38 @@ const LoginScreen = ({ onStart }) => {
     }
 
     onStart(activePlayers);
+  };
+
+  const handleStartBeta = (e) => {
+    e.preventDefault();
+    
+    // Validar campos obrigatórios
+    for (let i = 0; i < numPlayers; i++) {
+      const name = playersData[i].name.trim();
+      const club = playersData[i].club.trim();
+      if (!name || !club) {
+        alert(`Atenção: Por favor, preencha o Nome e a Unidade/Clube de todos os jogadores ativos! (Erro no Jogador ${i + 1})`);
+        return;
+      }
+    }
+
+    // Build list of active players for Beta Mode
+    const activePlayers = [];
+    for (let i = 0; i < numPlayers; i++) {
+      activePlayers.push({
+        id: i,
+        name: playersData[i].name.trim(),
+        club: playersData[i].club.trim(),
+        score: 150,
+        position: 0,
+        color: playerColors[i].class,
+        colorName: playerColors[i].name,
+        finished: false,
+        pathBranch: 'A' // Initial default branch is A
+      });
+    }
+
+    onStart(activePlayers, true); // Seta modo BETA como true!
   };
 
   return (
@@ -163,6 +195,14 @@ const LoginScreen = ({ onStart }) => {
             className="w-full mt-2 bg-desbrava-yellow hover:bg-yellow-400 text-desbrava-blue font-black py-4 rounded-xl shadow-lg transition-transform active:scale-95 uppercase tracking-wider flex justify-center items-center gap-2 text-base border-b-4 border-yellow-600"
           >
             <Tent size={22} /> Iniciar Acampamento
+          </button>
+
+          <button 
+            type="button"
+            onClick={handleStartBeta}
+            className="w-full mt-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg transition-transform active:scale-95 uppercase tracking-wider flex justify-center items-center gap-2 text-sm border-b-4 border-violet-800"
+          >
+            <Sparkles size={18} className="text-yellow-300 fill-yellow-300 animate-pulse" /> Testar Novo Tabuleiro (Beta)
           </button>
         </form>
 

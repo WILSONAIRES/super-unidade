@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { generateBoard } from './logic/boardGenerator';
 import LoginScreen from './components/LoginScreen';
 import GameBoard from './components/GameBoard';
+import BetaGameBoard from './components/BetaGameBoard';
 import GameHeader from './components/GameHeader';
 import Dice from './components/Dice';
 import ModalEvent from './components/ModalEvent';
@@ -38,13 +39,13 @@ function App() {
     }
   }, [gameState, board.length]);
 
-  const startGame = (activePlayers) => {
+  const startGame = (activePlayers, isBeta = false) => {
     setPlayers(activePlayers);
     setCurrentPlayerId(0);
     setBoard(generateBoard());
     setUsedQuizIds([]);
     setLastRoll(null);
-    setGameState('PLAYING');
+    setGameState(isBeta ? 'BETA_PLAYING' : 'PLAYING');
   };
 
   const restartGame = () => {
@@ -268,15 +269,26 @@ function App() {
     <div className="min-h-screen bg-desbrava-sand font-sans flex flex-col items-center overflow-hidden">
       {gameState === 'LOGIN' && <LoginScreen onStart={startGame} />}
       
-      {gameState === 'PLAYING' && players.length > 0 && (
+      {(gameState === 'PLAYING' || gameState === 'BETA_PLAYING') && players.length > 0 && (
         <div className="w-full max-w-lg mx-auto flex flex-col h-screen relative shadow-2xl bg-white/50">
           <GameHeader players={players} currentPlayerId={currentPlayerId} />
           
-          <GameBoard 
-            board={board} 
-            players={players} 
-            currentPlayerId={currentPlayerId} 
-          />
+          {gameState === 'BETA_PLAYING' ? (
+            <BetaGameBoard 
+              board={board} 
+              players={players} 
+              currentPlayerId={currentPlayerId} 
+              onSelectPath={(playerId, path) => {
+                setPlayers(prev => prev.map(p => p.id === playerId ? { ...p, pathBranch: path } : p));
+              }}
+            />
+          ) : (
+            <GameBoard 
+              board={board} 
+              players={players} 
+              currentPlayerId={currentPlayerId} 
+            />
+          )}
 
           <div className="bg-desbrava-green p-4 border-t-4 border-desbrava-yellow flex justify-center items-center shadow-[0_-4px_6px_rgba(0,0,0,0.1)] z-10 shrink-0">
             <Dice 
