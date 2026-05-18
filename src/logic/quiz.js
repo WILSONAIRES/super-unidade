@@ -413,7 +413,7 @@ export const bancoPerguntas = [
   {
     id: 39,
     categoria: "ESPIRITUAL",
-    pergunta: "Na lei dos Desbravadores, a expressão 'Ter uma canção no coração' significa:",
+    pergunta: "Na lei dos Desbravadores, a expressão 'Ter sempre um cântico no coração' significa:",
     opcoes: ["Cantar o tempo todo", "Ser alegre, otimista e louvar a Deus nas adversidades", "Aprender a tocar um instrumento", "Fazer parte do coral do clube"],
     correta: 1
   },
