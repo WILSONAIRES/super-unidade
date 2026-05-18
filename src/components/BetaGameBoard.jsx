@@ -7,11 +7,11 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
   // Helper to generate X and Y coordinate percentages for a sinuous sine-wave path
   const getCoordinates = (cellId, branch = 'A') => {
     const startY = 80;
-    const cellHeight = 100; // Spacing in px
+    const cellHeight = 46; // Spacing in px - significantly reduced to make them touch!
 
     const y = startY + cellId * cellHeight;
     const swing = Math.sin(cellId * 0.45);
-    let x = 50 + swing * 30; // base swing percent
+    let x = 50 + swing * 32; // base swing percent
 
     // Check if cell is in bifurcation zone 1 (16 to 25)
     if (cellId >= 16 && cellId <= 25) {
@@ -104,10 +104,10 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
           <div
             key={`cell-${i}-A`}
             style={{ left: `${coordsA.x}%`, top: `${coordsA.y}px` }}
-            className={`absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full flex flex-col items-center justify-center transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 ${stylingA.bg}`}
+            className={`absolute -translate-x-1/2 -translate-y-1/2 w-[72px] h-[40px] rounded-md flex items-center justify-center gap-1 transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 border-b-4 border-r-2 shadow-sm ${stylingA.bg}`}
           >
             {stylingA.icon}
-            <span className="text-[9px] font-black mt-0.5">{i}A</span>
+            <span className="text-[10px] font-black">{i}A</span>
             {/* Tooltip */}
             <div className="absolute bottom-full mb-2 bg-slate-950 text-white text-[9px] font-bold py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity uppercase whitespace-nowrap shadow-md z-30">
               Trilha Esquerda: {stylingA.name}
@@ -124,10 +124,10 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
           <div
             key={`cell-${i}-B`}
             style={{ left: `${coordsB.x}%`, top: `${coordsB.y}px` }}
-            className={`absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full flex flex-col items-center justify-center transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 ${stylingB.bg}`}
+            className={`absolute -translate-x-1/2 -translate-y-1/2 w-[72px] h-[40px] rounded-md flex items-center justify-center gap-1 transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 border-b-4 border-l-2 shadow-sm ${stylingB.bg}`}
           >
             {stylingB.icon}
-            <span className="text-[9px] font-black mt-0.5">{i}B</span>
+            <span className="text-[10px] font-black">{i}B</span>
             {/* Tooltip */}
             <div className="absolute bottom-full mb-2 bg-slate-950 text-white text-[9px] font-bold py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity uppercase whitespace-nowrap shadow-md z-30">
               Trilha Direita: {stylingB.name}
@@ -143,10 +143,10 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
           <div
             key={`cell-${i}`}
             style={{ left: `${coords.x}%`, top: `${coords.y}px` }}
-            className={`absolute -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full flex flex-col items-center justify-center transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 ${styling.bg}`}
+            className={`absolute -translate-x-1/2 -translate-y-1/2 w-[72px] h-[40px] rounded-md flex items-center justify-center gap-1 transition-all cursor-pointer group select-none hover:scale-110 z-20 active:scale-95 border-b-4 border-r-2 shadow-sm ${styling.bg}`}
           >
             {styling.icon}
-            <span className="text-[9px] font-black mt-0.5">{i === 0 ? 'GO' : i === 60 ? 'FIM' : i}</span>
+            <span className="text-[10px] font-black">{i === 0 ? 'GO' : i === 60 ? 'FIM' : i}</span>
             {/* Tooltip */}
             <div className="absolute bottom-full mb-2 bg-slate-950 text-white text-[9px] font-bold py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity uppercase whitespace-nowrap shadow-md z-30">
               {styling.name}
@@ -237,7 +237,7 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
     }
 
     return (
-      <svg className="absolute top-0 left-0 w-full h-[6200px] pointer-events-none z-10">
+      <svg className="absolute top-0 left-0 w-full h-[3200px] pointer-events-none z-10">
         {paths}
       </svg>
     );
@@ -362,7 +362,7 @@ const BetaGameBoard = ({ board, players, currentPlayerId, onSelectPath }) => {
       {renderPathSVG()}
 
       {/* Sinuous cells track */}
-      <div className="relative w-full h-[6200px] z-20">
+      <div className="relative w-full h-[3200px] z-20">
         {renderCells()}
         {renderPawns()}
       </div>
