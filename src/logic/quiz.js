@@ -542,7 +542,7 @@ export const bancoPerguntas = [
     categoria: "FÍSICO",
     pergunta: "Qual é o nome desta especialidade representada por esta insígnia oficial?",
     imagem: "https://wiki.pathfindersonline.org/images/thumb/1/11/Camping_Skills_I_AY_Honor.png/240px-Camping_Skills_I_AY_Honor.png",
-    opcoes: ["Fogueiras e Cozinha", "Excursionismo", "Arte de Acampar", "Excursionismo Pedestre"],
+    opcoes: ["Fogueiras e Cozinha", "Excursionismo", "Acampamento I", "Excursionismo Pedestre"],
     correta: 2
   },
   {
