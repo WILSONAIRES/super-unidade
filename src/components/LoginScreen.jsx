@@ -48,15 +48,23 @@ const LoginScreen = ({ onStart }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // Validar campos obrigatórios
+    for (let i = 0; i < numPlayers; i++) {
+      const name = playersData[i].name.trim();
+      const club = playersData[i].club.trim();
+      if (!name || !club) {
+        alert(`Atenção: Por favor, preencha o Nome e a Unidade/Clube de todos os jogadores ativos! (Erro no Jogador ${i + 1})`);
+        return;
+      }
+    }
+
     // Build list of active players
     const activePlayers = [];
     for (let i = 0; i < numPlayers; i++) {
-      const name = playersData[i].name.trim() || `Desbravador ${i + 1}`;
-      const club = playersData[i].club.trim() || `Unidade Estrela`;
       activePlayers.push({
         id: i,
-        name,
-        club,
+        name: playersData[i].name.trim(),
+        club: playersData[i].club.trim(),
         score: 150,
         position: 0,
         color: playerColors[i].class,
@@ -125,9 +133,10 @@ const LoginScreen = ({ onStart }) => {
                     <input 
                       type="text" 
                       className="w-full px-3 py-1.5 rounded-lg border-2 border-slate-200 focus:border-desbrava-blue focus:outline-none transition-colors text-sm font-semibold text-slate-800"
-                      placeholder={`Ex: Desbravador ${idx + 1}`}
+                      placeholder={`Ex: Nome do Jogador ${idx + 1}`}
                       value={playersData[idx].name}
                       onChange={(e) => handleInputChange(idx, 'name', e.target.value)}
+                      required
                     />
                   </div>
 
@@ -141,6 +150,7 @@ const LoginScreen = ({ onStart }) => {
                       placeholder="Ex: Unidade Estrela"
                       value={playersData[idx].club}
                       onChange={(e) => handleInputChange(idx, 'club', e.target.value)}
+                      required
                     />
                   </div>
                 </div>
