@@ -92,7 +92,7 @@ const ModalEvent = ({ event, onClose }) => {
               {data.imagem && (
                 <div className="my-1 w-full flex justify-center bg-slate-50 py-2 rounded-xl border border-slate-100 shadow-sm">
                   <img 
-                    src={data.imagem} 
+                    src={data.imagem.startsWith('http') ? `https://images.weserv.nl/?url=${encodeURIComponent(data.imagem.replace(/^https?:\/\//, ''))}` : data.imagem} 
                     alt="Imagem da Pergunta" 
                     className="h-28 md:h-32 object-contain"
                   />
