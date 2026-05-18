@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpCircle, AlertTriangle, Tent, Flag, CheckCircle, Dumbbell, Brain, Heart, Sparkles } from 'lucide-react';
+import { HelpCircle, AlertTriangle, Tent, Flag, CheckCircle, Dumbbell, Brain, Heart, Sparkles, Trophy } from 'lucide-react';
 
 const BoardCell = ({ cell, playersHere, currentPlayerId }) => {
   let bgColor = 'bg-slate-300';
@@ -7,13 +7,19 @@ const BoardCell = ({ cell, playersHere, currentPlayerId }) => {
   let label = cell.id;
   let cellName = '';
 
-  const checkpoints = [15, 30, 45];
+  const checkpoints = [15, 30, 45, 60];
   const isCheckpoint = checkpoints.includes(cell.id);
 
   if (isCheckpoint) {
-    bgColor = 'bg-gradient-to-br from-indigo-600 via-fuchsia-600 to-violet-700 text-white shadow-[0_0_15px_rgba(139,92,246,0.5)] border-2 border-yellow-400 animate-pulse';
-    icon = <Sparkles className="text-yellow-300 fill-yellow-300 animate-bounce" size={20} />;
-    cellName = 'Portal';
+    if (cell.id === 60) {
+      bgColor = 'bg-gradient-to-br from-yellow-500 via-amber-500 to-red-600 text-white shadow-[0_0_20px_rgba(245,158,11,0.6)] border-4 border-yellow-300 animate-pulse';
+      icon = <Trophy className="text-yellow-150 fill-yellow-200 animate-bounce" size={22} />;
+      cellName = 'Portal Final';
+    } else {
+      bgColor = 'bg-gradient-to-br from-indigo-600 via-fuchsia-600 to-violet-700 text-white shadow-[0_0_15px_rgba(139,92,246,0.5)] border-2 border-yellow-400 animate-pulse';
+      icon = <Sparkles className="text-yellow-300 fill-yellow-300 animate-bounce" size={20} />;
+      cellName = 'Portal';
+    }
   } else {
     switch (cell.type) {
       case 'START':

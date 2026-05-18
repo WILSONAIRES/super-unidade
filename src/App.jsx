@@ -80,7 +80,7 @@ function App() {
     let stepsLeft = Math.abs(steps);
     const direction = steps > 0 ? 1 : -1;
     const startPos = players.find(p => p.id === playerId)?.position || 0;
-    const checkpoints = [15, 30, 45];
+    const checkpoints = [15, 30, 45, 60];
     let hitCheckpoint = null;
 
     const interval = setInterval(() => {
@@ -119,12 +119,12 @@ function App() {
           setIsAnimatingMovement(false);
 
           // Evaluate once player finishes walking
-          if (active.position === 60) {
-            setGameState('FINISHED');
+          if (hitCheckpoint !== null) {
+            triggerCheckpointQuiz(playerId, hitCheckpoint);
+          } else if (active.position === 60) {
+            triggerCheckpointQuiz(playerId, 60);
           } else {
-            if (hitCheckpoint !== null) {
-              triggerCheckpointQuiz(playerId, hitCheckpoint);
-            } else if (onComplete) {
+            if (onComplete) {
               onComplete(active.position);
             } else {
               processCell(playerId, active.position);
@@ -201,7 +201,16 @@ function App() {
   const handleCloseEvent = (result) => {
     if (!result) {
       setCurrentEvent(null);
-      nextTurn();
+      // If player is at 60 (the final portal), close event ends game
+      setPlayers((currentPlayers) => {
+        const active = currentPlayers.find(p => p.id === currentPlayerId);
+        if (active && active.position === 60) {
+          setGameState('FINISHED');
+        } else {
+          nextTurn();
+        }
+        return currentPlayers;
+      });
       return;
     }
 
@@ -239,10 +248,18 @@ function App() {
 
     setCurrentEvent(null);
 
-    // If turn changes immediately
-    if (!skipTurnChange) {
-      nextTurn();
-    }
+    // If game should end or turn changes
+    setTimeout(() => {
+      setPlayers((currentPlayers) => {
+        const active = currentPlayers.find(p => p.id === currentPlayerId);
+        if (active && active.position === 60) {
+          setGameState('FINISHED');
+        } else if (!skipTurnChange) {
+          nextTurn();
+        }
+        return currentPlayers;
+      });
+    }, 100);
   };
 
   const activePlayer = players.find(p => p.id === currentPlayerId);
