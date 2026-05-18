@@ -576,6 +576,216 @@ export const bancoPerguntas = [
     imagem: "https://wiki.pathfindersonline.org/images/thumb/b/b3/Hiking_AY_Honor.png/240px-Hiking_AY_Honor.png",
     opcoes: ["Excursionismo Pedestre", "Ciclismo", "Vida Campestre", "Acampamento I"],
     correta: 0
+  },
+  {
+    id: 82,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o primeiro procedimento básico a ser tomado em caso de queimaduras de 1º grau?",
+    opcoes: ["Passar pasta de dente", "Aplicar gelo diretamente", "Colocar sob água corrente fria por alguns minutos", "Furar as bolhas imediatamente"],
+    correta: 2
+  },
+  {
+    id: 83,
+    categoria: "FÍSICO",
+    pergunta: "Qual tipo de fogueira é mais adequado para aquecimento de pessoas e reflexão, devido ao seu calor lateral?",
+    opcoes: ["Fogo Refletor", "Fogueira Estrela", "Fogueira de Trincheira", "Fogueira de Conselho"],
+    correta: 0
+  },
+  {
+    id: 84,
+    categoria: "FÍSICO",
+    pergunta: "Qual nó é utilizado para diminuir o comprimento de um cabo sem precisar cortá-lo?",
+    opcoes: ["Nó de Algema", "Nó de Catau", "Volta da Ribeira", "Nó Direito"],
+    correta: 1
+  },
+  {
+    id: 85,
+    categoria: "FÍSICO",
+    pergunta: "Na ordem unida, ao comando de 'SEM CADÊNCIA', o que os desbravadores devem fazer?",
+    opcoes: ["Correr em ritmo acelerado", "Marchar sem marcar o passo esquerdo, mas mantendo o alinhamento e silêncio", "Parar a marcha imediatamente", "Marchar cantando o hino do clube"],
+    correta: 1
+  },
+  {
+    id: 86,
+    categoria: "FÍSICO",
+    pergunta: "Qual amarra é usada para unir dois troncos paralelos, aumentando o comprimento da haste?",
+    opcoes: ["Amarra Diagonal", "Amarra Quadrada", "Amarra Circular ou de Trespasso", "Amarra Paralela ou de Emenda"],
+    correta: 3
+  },
+  {
+    id: 87,
+    categoria: "FÍSICO",
+    pergunta: "Qual é o procedimento correto ao se deparar com uma pessoa com sintomas de insolação (calor extremo)?",
+    opcoes: ["Dar bebida alcoólica para acalmar", "Levar para a sombra, remover excesso de roupas e aplicar panos frios/úmidos", "Fazer a pessoa correr para suar", "Cobrir com cobertores grossos"],
+    correta: 1
+  },
+  {
+    id: 88,
+    categoria: "FÍSICO",
+    pergunta: "Quantos graus equivalem à direção cardeal SUL (S) na rosa dos ventos?",
+    opcoes: ["90°", "180°", "270°", "360°"],
+    correta: 1
+  },
+  {
+    id: 89,
+    categoria: "FÍSICO",
+    pergunta: "Qual tipo de fogueira em formato cônico é a base para iniciar quase todas as outras fogueiras?",
+    opcoes: ["Fogueira Estrela", "Fogueira Pirâmide ou Cone", "Fogueira de Trincheira", "Fogueira de Conselho"],
+    correta: 1
+  },
+  {
+    id: 90,
+    categoria: "FÍSICO",
+    pergunta: "Qual nó serve para amarrar um cabo a um mastro ou árvore de forma que quanto mais se puxa, mais ele aperta, sendo muito usado para arrastar troncos?",
+    opcoes: ["Volta da Ribeira", "Lais de Guia", "Nó Direito", "Nó Cego"],
+    correta: 0
+  },
+  {
+    id: 91,
+    categoria: "FÍSICO",
+    pergunta: "Qual é a distância oficial mínima recomendada para montar barracas em relação ao local da fogueira do acampamento?",
+    opcoes: ["2 metros", "5 metros", "No mínimo 10 metros", "Não há distância mínima"],
+    correta: 2
+  },
+  {
+    id: 92,
+    categoria: "MENTAL",
+    pergunta: "Em qual ano foi criada a primeira Especialidade oficial no clube de Desbravadores?",
+    opcoes: ["1928", "1950", "1962", "1975"],
+    correta: 0
+  },
+  {
+    id: 93,
+    categoria: "MENTAL",
+    pergunta: "Quem desenhou o triângulo oficial do clube de Desbravadores (Emblema D1)?",
+    opcoes: ["Arthur Spalding", "John Hancock", "Herbert Haas", "Henry Bergh"],
+    correta: 1
+  },
+  {
+    id: 94,
+    categoria: "MENTAL",
+    pergunta: "Qual área de especialidade é representada pela cor marrom da insígnia oficial?",
+    opcoes: ["Estudo da Natureza", "Artes Recreativas", "Ciência e Saúde", "Atividades Missionárias e Agrícolas"],
+    correta: 3
+  },
+  {
+    id: 95,
+    categoria: "MENTAL",
+    pergunta: "Na preservação da fauna e flora, o que significa a sigla 'IBAMA' no Brasil?",
+    opcoes: ["Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis", "Instituto de Biologia Animal e Meio Ambiente", "Inspetoria de Biodiversidade Ambiental da Amazônia", "Instituto de Botânica Aplicada e Manejo Animal"],
+    correta: 0
+  },
+  {
+    id: 96,
+    categoria: "MENTAL",
+    pergunta: "Qual inseto é conhecido por ser o principal polinizador do planeta e essencial para a vida na Terra?",
+    opcoes: ["Mosquito", "Abelha", "Borboleta", "Formiga"],
+    correta: 1
+  },
+  {
+    id: 97,
+    categoria: "MENTAL",
+    pergunta: "Quantos anos durou a jornada do povo de Israel pelo deserto após a saída do Egito?",
+    opcoes: ["10 anos", "40 anos", "70 anos", "120 anos"],
+    correta: 1
+  },
+  {
+    id: 98,
+    categoria: "MENTAL",
+    pergunta: "Qual dos seguintes animais é classificado como um réptil?",
+    opcoes: ["Sapo", "Tartaruga", "Salamandra", "Morcego"],
+    correta: 1
+  },
+  {
+    id: 99,
+    categoria: "MENTAL",
+    pergunta: "Em qual cidade brasileira foi fundado o primeiro clube de Desbravadores oficial do país?",
+    opcoes: ["São Paulo - SP", "Rio de Janeiro - RJ", "Ribeirão Preto - SP", "Porto Alegre - RS"],
+    correta: 2
+  },
+  {
+    id: 100,
+    categoria: "MENTAL",
+    pergunta: "Qual árvore é o maior ser vivo em volume de madeira do planeta Terra?",
+    opcoes: ["Baobá", "Pinheiro", "Eucalipto", "Sequóia-gigante"],
+    correta: 3
+  },
+  {
+    id: 101,
+    categoria: "MENTAL",
+    pergunta: "Quantas áreas de especialidades existem atualmente no currículo dos Desbravadores da Divisão Sul-Americana?",
+    opcoes: ["3 áreas", "5 áreas", "9 áreas", "12 áreas"],
+    correta: 2
+  },
+  {
+    id: 102,
+    categoria: "ESPIRITUAL",
+    pergunta: "Quem escreveu a maioria dos salmos registrados na Bíblia?",
+    opcoes: ["Moisés", "Salomão", "Davi", "Isaías"],
+    correta: 2
+  },
+  {
+    id: 103,
+    categoria: "ESPIRITUAL",
+    pergunta: "Complete o texto de Salmos 119:105: 'Lâmpada para os meus pés é tua palavra, e ________ para o meu caminho.'",
+    opcoes: ["direção", "luz", "proteção", "esperança"],
+    correta: 1
+  },
+  {
+    id: 104,
+    categoria: "ESPIRITUAL",
+    pergunta: "Qual profeta foi engolido por um grande peixe após tentar fugir da ordem de pregar em Nínive?",
+    opcoes: ["Ezequiel", "Jonas", "Daniel", "Elias"],
+    correta: 1
+  },
+  {
+    id: 105,
+    categoria: "ESPIRITUAL",
+    pergunta: "Quantos discípulos Jesus escolheu originalmente para o Seu ministério?",
+    opcoes: ["7", "10", "12", "70"],
+    correta: 2
+  },
+  {
+    id: 106,
+    categoria: "ESPIRITUAL",
+    pergunta: "Qual livro da Bíblia relata a criação do mundo e a queda do ser humano?",
+    opcoes: ["Gênesis", "Êxodo", "Apocalipse", "Salmos"],
+    correta: 0
+  },
+  {
+    id: 107,
+    categoria: "ESPIRITUAL",
+    pergunta: "Quem liderou o povo de Israel na conquista da cidade de Jericó e na queda de suas muralhas?",
+    opcoes: ["Moisés", "Josué", "Calebe", "Gideão"],
+    correta: 1
+  },
+  {
+    id: 108,
+    categoria: "ESPIRITUAL",
+    pergunta: "Na Lei dos Desbravadores, o que significa a expressão 'Cuidar do meu corpo'?",
+    opcoes: ["Fazer exercícios apenas antes de dormir", "Alimentar-se bem, praticar hábitos saudáveis e evitar substâncias nocivas", "Apenas tomar banho todos os dias", "Dormir mais de 12 horas por dia"],
+    correta: 1
+  },
+  {
+    id: 109,
+    categoria: "ESPIRITUAL",
+    pergunta: "Quem foi o companheiro de Paulo em sua primeira viagem missionária oficial descrita em Atos?",
+    opcoes: ["Barnabé", "Pedro", "Lucas", "Tiago"],
+    correta: 0
+  },
+  {
+    id: 110,
+    categoria: "ESPIRITUAL",
+    pergunta: "Qual era o nome da esposa de Abraão e mãe de Isaque na velhice?",
+    opcoes: ["Rebeca", "Raquel", "Sara", "Lia"],
+    correta: 2
+  },
+  {
+    id: 111,
+    categoria: "ESPIRITUAL",
+    pergunta: "Qual apóstolo é conhecido por escrever a revelação do Apocalipse enquanto estava exilado na ilha de Patmos?",
+    opcoes: ["Paulo", "João", "Pedro", "Tiago"],
+    correta: 1
   }
 ];
 
